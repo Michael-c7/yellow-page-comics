@@ -1,0 +1,20 @@
+/*
+ Theme Name: Yellow Page Comics
+ Author: Michael
+ Version: 1.0
+*/
+
+:root {
+    --main-color:#FED700;
+}
+
+body {
+    font-family:"Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+
+* {
+    /* color:var(--main-color); */
+}
