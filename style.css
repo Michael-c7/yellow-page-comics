@@ -18,3 +18,128 @@ body {
 * {
     /* color:var(--main-color); */
 }
+
+
+
+
+/* header */
+
+/* navbar - desktop */
+.navbar-container {
+    margin:0 10rem;
+}
+
+.navbar {  
+    display:flex;
+    align-items: center;
+}
+
+.logo-link-container {
+    text-decoration: none;
+    color:#1f1d1d;
+}
+
+.logo-link-container h1 {
+    font-weight: bold;
+}
+
+.logo-link-container span {
+    color: var(--main-color);
+}
+
+
+/* middle bit */
+.navbar-search-container {
+    /* margin:0 auto; */
+    display:flex;
+    align-items: center;
+    padding:1rem;
+}
+
+.navbar-search-form {
+    border:2px solid var(--main-color);
+    border-radius: 24px;
+    margin-left:1rem;
+    width:700px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-search-input {
+    border:none;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    background: none;
+    width:100%;
+}
+
+.navbar-search-input::placeholder {
+    color:gainsboro;
+    padding-left:0.5rem;
+}
+
+.navbar-search-btn {
+    border:none;
+    background-color:var(--main-color);
+    padding: 0.25rem 1rem;
+    font-size:20px;
+
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+
+.navbar-info-section {
+    display:flex;
+    align-items: center;
+    gap:2rem;
+}
+
+.navbar-info-section i {
+    color:#000;
+    font-size:24px;
+}
+
+.heart-icon-link {
+    position: relative;
+    top:1px;
+}
+
+.wishlist-amt {
+    position: absolute;
+    color:#000;
+    background-color: var(--main-color);
+    width:22px;
+    height:22px;
+    border-radius: 10000px;
+    right:-0.5rem;
+    bottom:-0.25rem;
+    display:flex;
+    /* temp until i fix the center spacing */
+    padding-left:6px;
+}
+
+
+
+.bag-container {
+    display:flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.bag-icon-container {
+    position: relative;
+    display:flex;
+    align-items: center;
+}
+
+.bag-price {
+    color:#000;
+    font-weight: bold;
+    margin-left:0.25rem;
+    font-size:13px;
+}
+
+
+/* navbar - mobile */
