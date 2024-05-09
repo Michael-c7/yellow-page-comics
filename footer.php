@@ -1,4 +1,4 @@
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ml-4">
+<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ml-4">
     <div class="col-md-4 d-flex align-items-center ">
       <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Yellow Page Comics</span>
     </div>
@@ -23,6 +23,8 @@
   </footer>
 
 <!-- wp_footer is the black bar at the top of the page/ admin bar -->
-<?php wp_footer(); ?>
+<?php 
+wp_footer();
+ ?>
 </body>
 </html>
