@@ -1,10 +1,66 @@
 <?php
+    get_header();
+
     while(have_posts()) {
         the_post(); ?>
-        <h1>This is a page, not a post.</h1>
-        <h2>
-        <?php the_title()?>
-        </h2>
-        <p> <?php the_content()?> </p>
+
+
+    <section class="generic-content">
+        <div>
+            <ul class="breadcrumbs">
+                <li><a href="<?php echo site_url("/") ?>">Home</a></li>
+                <?php
+                $parentPageId = wp_get_post_parent_id(get_the_ID());
+                $child_url = get_permalink($parentPageId);
+                $child_text = get_the_title($parentPageId);
+                
+                if($parentPageId) {
+                    echo "<li><a href='$child_url'>$child_text</a></li>";
+                }
+                ?>
+                
+                <li><?php the_title() ?></li>
+            </ul>
+        </div>
+            
+        <h2 class="generic-content__heading"><?php the_title() ?></h2>
+            
+        <p class="generic-content__text"><?php the_content()?></p>
+
+
+        <?php 
+    $parentPageId = wp_get_post_parent_id(get_the_ID());
+
+    $child_links = wp_list_pages(
+        array(
+            'title_li' => NULL,
+            'child_of' => get_the_ID(),
+            'echo' => 0 // Set 'echo' parameter to 0 to return the value instead of echoing it
+        )
+    );
+
+    if ($parentPageId) {
+        echo '
+        <div class="generic-content__more-links">
+            <h3>Turn the page and learn more</h3>        
+            <ul>' . $child_links . '</ul>
+        </div>';
+    }
+    ?>
+
+
+
+
+        <!-- Accordion for the FAQ of frequently asked questions -->
+        <?php 
+            // if(2) {
+            //     echo '
+            //     accordion here
+            //     ';
+            // }
+        ?>
+        <!-- End of FAQ accordion -->
+    </section>
+
     <?php }
 ?>
