@@ -37,7 +37,7 @@ https://icons.getbootstrap.com/
       </div>
       <div class="offcanvas-body">
         <ul class="offcanvas-items">
-            <li>
+            <!-- <li>
                 <a href="/">Home</a>
             </li>
             <li>
@@ -45,7 +45,13 @@ https://icons.getbootstrap.com/
             </li>
             <li>
                 <a href="/">About</a>
-            </li>
+            </li> -->
+            <?php 
+              wp_nav_menu(array(
+                "theme_location" => "sidebarNavLocation"
+              ));
+            ?>
+
 
             <li><hr class="divider"></li>
 
@@ -79,16 +85,23 @@ https://icons.getbootstrap.com/
 
 
     <section class="navbar-search-container">
-      <div class="nav-item dropdown navbar__all-pages">
+      <nav class="nav-item dropdown navbar__all-pages">
           <button class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           All Pages
           </button>
-          <ul class="dropdown-menu">
+          <!-- <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Products</a></li>
             <li><a class="dropdown-item" href="<?php echo site_url("/about") ?>">About</a></li>
             <li><a class="dropdown-item" href="<?php echo site_url("/privacy-policy") ?>">Privacy Policy</a></li>
+          </ul> -->
+          <ul class="dropdown-menu">
+              <?php 
+              wp_nav_menu(array(
+                "theme_location" => "headerMenuLocation"
+              ));
+              ?>
           </ul>
-      </div> 
+      </nav> 
 
       <form class="navbar-search-form">
         <input class="navbar-search-input" placeholder="Search..."/>
