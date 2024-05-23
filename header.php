@@ -4,9 +4,9 @@ https://icons.getbootstrap.com/
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
     <head>
-        <meta charset="utf-8">
+        <meta charset="<?php bloginfo("charset") ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Yellow Page Comics</title>
 
@@ -20,18 +20,73 @@ https://icons.getbootstrap.com/
 <header class="navbar-container">
   <nav class="navbar">
 
-    <a href="/" class="logo-link-container">
+    <a href="<?php echo site_url("/") ?>" class="logo-link-container">
       <h1>Yellow<span class=""> Page</span></h1>
     </a>
 
+    <button class="btn hamburger-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+          <div>Yellow<span class=""> Page</span></div>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="offcanvas-items">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a href="/">Products</a>
+            </li>
+            <li>
+                <a href="/">About</a>
+            </li>
+
+            <li><hr class="divider"></li>
+
+            <li>
+                <a href="/">Wishlist (0)</a>
+            </li>
+            <li>
+                <a href="/">Cart ($0.00)</a>
+            </li>
+            <li>
+              <div class="nav-item dropdown">
+                <button class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- When user logged out -->
+                  <li><a class="dropdown-item" href="#">Sign Up</a></li>
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <!-- When user logged in -->
+                  <!-- <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Stats</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li> -->
+                </ul>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+    
+
+
     <section class="navbar-search-container">
-      <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <div class="nav-item dropdown navbar__all-pages">
+          <button class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           All Pages
-          </a>
+          </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Products</a></li>
-            <li><a class="dropdown-item" href="#">About</a></li>
+            <li><a class="dropdown-item" href="<?php echo site_url("/about") ?>">About</a></li>
+            <li><a class="dropdown-item" href="<?php echo site_url("/privacy-policy") ?>">Privacy Policy</a></li>
           </ul>
       </div> 
 
