@@ -3,12 +3,28 @@ get_header();
 ?>
 
 <section style="margin:0 10rem;">
-    <h1 style="text-align:center; margin-top:2rem; margin-bottom:1rem;">Welcome to our blog!</h1>
+    <h1 style="text-align:center; margin-top:2rem; margin-bottom:1rem;"><?php 
+    if(is_category()) {
+        single_cat_title();
+    } 
+    if(is_author()) {
+        echo "Posts by "; the_author();
+    } 
+    ?></h1>
 
     <div>
             <ul class="breadcrumbs">
                 <li><a href="<?php echo site_url("/") ?>">Home</a></li>
-                <li>Blog</li>
+                <?php
+                    $parentPageId = wp_get_post_parent_id(get_the_ID());
+                    $child_url = get_permalink($parentPageId);
+                    $child_text = get_the_title($parentPageId);
+                    
+                    if($parentPageId) {
+                        echo "<li><a href='$child_url'>$child_text</a></li>";
+                    }
+                ?>
+                <li><?php the_title() ?></li>
             </ul>
         </div>
     

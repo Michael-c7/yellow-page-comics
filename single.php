@@ -1,3 +1,4 @@
+<!-- individual posts -->
 <?php
     get_header();
 
