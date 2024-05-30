@@ -87,13 +87,15 @@ body {
     border-bottom-left-radius: 24px;
     background: none;
     width:100%;
+    padding-left: 1rem;
+    padding-right:0.25rem;
     /* remove focus outline until I make a better one */
     outline: none;
 }
 
 .navbar-search-input::placeholder {
     color:gainsboro;
-    padding-left:0.5rem;
+    /* padding-left:0.5rem; */
 }
 
 .navbar-search-btn {
