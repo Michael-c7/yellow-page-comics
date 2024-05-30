@@ -288,9 +288,15 @@ body {
     justify-content: center;
     align-items:center;
     /* background-color: blue; */
+    transition: all 0.1s  ease;
 }
 
-.hero-sliders__movement-btn:active { background-color: blue;}
+.hero-sliders__movement-btn:hover,
+.hero-sliders__movement-btn:focus {
+    filter:drop-shadow(0 0 7px #2c2c2c48);
+}
+
+/* .hero-sliders__movement-btn:active { background-color: blue;} */
 
 
 .hero-sliders__prev-btn {
