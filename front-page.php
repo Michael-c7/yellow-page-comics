@@ -78,6 +78,71 @@
 </article>
 
 
+<!-- Blog carousel section start -->
+<section style="margin:5rem var(--page-buffer);">
+    <h2>Flip the page on our blog</h2>
+
+    <div>
+        <?php 
+            $homepagePosts = new WP_Query(array(
+                "posts_per_page" => 2
+            ));
+
+            // $test = 1;
+            // $blogTitle = the_title();
+            // $abc = $homepagePosts->the_post();
+
+            // while($homepagePosts->have_posts()) {
+            //     $test++;
+            //     $abc;
+            //     echo "<div>$blogTitle</div>";
+            // }
+
+        ?>
+        <p>text goes here for blog section</p>
+
+
+    </div>
+</section>
+<!-- Blog carousel section end -->
+
+
+<!-- Event section Start -->
+<section style="margin:5rem var(--page-buffer);">
+    <h2>Fly to one of our events!</h2>
+
+    <div>
+    <?php
+        $args = array(
+            'post_type' => 'event',
+            'posts_per_page' => -1
+        );
+
+        $query = new WP_Query($args);
+        if ($query->have_posts()): 
+            echo '<div>';
+            while ($query->have_posts()): $query->the_post();
+            echo '<div style="padding:1rem 0;">';
+                    echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+                    echo '</br>';
+
+                    echo has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 18);
+                    echo '</br>';
+
+                    echo '<a href="/abc123">Learn more</a>';
+                    echo '</br>';
+            echo '</div>';
+            endwhile;
+            echo '</div>';
+            wp_reset_postdata();
+        endif;
+    ?>
+        <!-- <p>text goes here for event section</p> -->
+    </div>
+</section>
+<!-- Event section end -->
+
+
 <?php
  get_footer()
 ?>
