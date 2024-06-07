@@ -1,30 +1,6 @@
 <?php get_header() ?>
 
 
-
-
-<?php
-/*
-    while(have_posts()) {
-        the_post(); ?>
-        <h2>
-            <a href="<?php the_permalink()?>">
-                <?php the_title()?>
-            </a>
-        </h2>
-        <p> <?php the_content()?> </p>
-        <hr/>
-        <?php }
-        
-*/
-?>
-        
-<?php
- // get_footer()
-?>
-
-
-
 <!-- the hero slider will be put here until I can put it into its own file/component -->
 <article class="hero-slider-container">
     <h2 class="hero-slider__heading">Browser our collection of <div>Comic Books</div></h2>
@@ -97,11 +73,33 @@
             //     $abc;
             //     echo "<div>$blogTitle</div>";
             // }
+            $args = array(
+                'posts_per_page' => -1,
+            );
+    
+            $query = new WP_Query($args);
+            if ($query->have_posts()): 
+                echo '<div>';
+                while ($query->have_posts()): $query->the_post();
+                echo '<div style="padding:1rem 0;">';
+                        echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+                        echo '</br>';
+    
+                        echo the_title();
+                        echo '</br>';
+
+                        echo  wp_trim_words(get_the_content(), 18);
+                        echo '</br>';
+    
+                        echo '<a href="' . get_permalink() . '">Learn more</a>';
+                        echo '</br>';
+                echo '</div>';
+                endwhile;
+                echo '</div>';
+                wp_reset_postdata();
+            endif;
 
         ?>
-        <p>text goes here for blog section</p>
-
-
     </div>
 </section>
 <!-- Blog carousel section end -->
@@ -109,13 +107,27 @@
 
 <!-- Event section Start -->
 <section style="margin:5rem var(--page-buffer);">
-    <h2>Fly to one of our events!</h2>
+    <h2>Upcoming Events!</h2>
 
     <div>
     <?php
+        $currentDate = date('Myd');
         $args = array(
             'post_type' => 'event',
-            'posts_per_page' => -1
+            'posts_per_page' => -1,
+            // this sorts by newest date to oldest date
+            'meta_key' => 'event_date',
+            'orderby' => 'meta_value_num',
+            'order' => 'ASC'
+            // This lets only get events that are upcoming and not all events
+            // 'meta_query' => array(
+            //     array(
+            //         'key' => 'event_date',
+            //         'compare' => '>=',
+            //         'value' => $currentDate,
+            //         'type' => 'numeric'
+            //     )
+            // )
         );
 
         $query = new WP_Query($args);
@@ -129,7 +141,10 @@
                     echo has_excerpt() ? get_the_excerpt() : wp_trim_words(get_the_content(), 18);
                     echo '</br>';
 
-                    echo '<a href="/abc123">Learn more</a>';
+                    echo the_field('event_date');
+                    echo '</br>';
+
+                    echo '<a href="' . get_permalink() . '">Learn more</a>';
                     echo '</br>';
             echo '</div>';
             endwhile;
@@ -137,7 +152,6 @@
             wp_reset_postdata();
         endif;
     ?>
-        <!-- <p>text goes here for event section</p> -->
     </div>
 </section>
 <!-- Event section end -->
