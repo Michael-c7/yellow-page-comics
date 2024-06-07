@@ -35,9 +35,6 @@
     }
 
     add_action("after_setup_theme", "comic_features");
-
-
-
     
     // function register_primary_menu() {
     //     register_nav_menu( 'primary', __( 'Primary Menu', 'theme-text-domain' ) );
